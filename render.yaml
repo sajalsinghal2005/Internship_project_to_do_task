@@ -1,0 +1,17 @@
+services:
+  # ─── Full Stack Web Service ──────────────────────────────
+  - type: web
+    name: taskflow-fullstack
+    runtime: node
+    plan: free
+    buildCommand: npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGO_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: VITE_API_URL
+        value: /api

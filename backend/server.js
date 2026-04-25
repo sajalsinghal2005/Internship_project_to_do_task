@@ -32,7 +32,7 @@ app.use('/api/auth',  require('./routes/auth'));
 app.use('/api/tasks', require('./routes/tasks'));
 
 // Health check route
-app.get('/', (req, res) => {
+app.get('/health', (req, res) => {
   res.json({
     success: true,
     message: '🚀 TaskFlow API is running',
@@ -41,9 +41,21 @@ app.get('/', (req, res) => {
   });
 });
 
-// 404 Handler
-app.use((req, res) => {
-  res.status(404).json({ success: false, message: 'Route not found' });
+// ─── Serve Frontend ──────────────────────────────────────
+const path = require('path');
+const frontendPath = path.join(__dirname, '../frontend/dist');
+
+app.use(express.static(frontendPath));
+
+// For all other routes, serve the index.html (SPA support)
+app.get('*', (req, res, next) => {
+  if (req.path.startsWith('/api')) return next();
+  res.sendFile(path.join(frontendPath, 'index.html'));
+});
+
+// 404 Handler (only for API routes)
+app.use('/api', (req, res) => {
+  res.status(404).json({ success: false, message: 'API Route not found' });
 });
 
 // Global Error Handler
