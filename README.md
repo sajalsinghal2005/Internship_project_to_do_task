@@ -298,11 +298,4 @@ Use **Postman** or **Thunder Client (VS Code)**:
 
 **Your Name**  
 Full Stack Developer Intern Candidate  
-📧 your.email@example.com  
-🔗 [LinkedIn](https://linkedin.com) | [GitHub](https://github.com)
-
----
-
-## 📄 License
-
-MIT License — feel free to use this project as a reference.
+📧 sajalsinghal62650@gmail.com  
