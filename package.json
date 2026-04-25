@@ -6,8 +6,8 @@
     "dev:backend": "cd backend && npm run dev",
     "dev:frontend": "cd frontend && npm run dev",
     "dev": "npx concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
-    "build:backend": "cd backend && npm install",
-    "build:frontend": "cd frontend && npm install && npm run build",
+    "build:backend": "cd backend && npm install --production=false",
+    "build:frontend": "cd frontend && npm install --production=false && npm run build",
     "build": "npm run build:backend && npm run build:frontend",
     "start": "cd backend && npm start"
   }
